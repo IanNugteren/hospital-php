@@ -1,6 +1,6 @@
 <?php
 
-require(ROOT . "model/PatientModel.php");
+require(ROOT . "model/HospitalModel.php");
 
 function index () {
 	$species = getAllSpecies();
@@ -35,5 +35,5 @@ function editSpecies ($id) {
 
 function updateSpeciesRequest ($id) {
 	post_updateSpeciesRequest($id);
-	header("Location: index");
+	header("Location: /hospital/clients/index");
 }

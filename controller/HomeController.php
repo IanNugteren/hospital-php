@@ -1,6 +1,6 @@
 <?php
 
-require(ROOT . "model/PatientModel.php");
+require(ROOT . "model/HospitalModel.php");
 
 function index () {
 	$patients = getAllPatients();

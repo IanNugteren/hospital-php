@@ -14,6 +14,7 @@
 					echo "<td>" . $client['client_firstname'] . "</td>";
 					echo "<td>" . $client['client_lastname'] . "</td>";
 					echo "<td><a href=\"" . URL . "clients/deleteClient/" . $client['client_id'] . "\">Verwijderen</a></td>";
+					echo "<td><a href=\"" . URL . "clients/editClient/" . $client['client_id'] . "\">Edit</a></td>";
 					echo "<tr>";
 				}
 			?>

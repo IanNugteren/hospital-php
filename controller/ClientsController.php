@@ -1,6 +1,6 @@
 <?php
 
-require(ROOT . "model/PatientModel.php");
+require(ROOT . "model/HospitalModel.php");
 
 function index () {
 	$clients = getAllclients();
@@ -22,6 +22,19 @@ function createClientRequest () {
 
 function deleteClient ($id) {
 	post_deleteClient($id);
+	header("Location: /hospital/clients/index");
+}
+
+function editClient ($id) {
+	$client = getClient($id);
+
+	render("clients/edit", array(
+		"client" => $client
+	));
+}
+
+function updateClientRequest ($id) {
+	post_updateClientRequest($id);
 	header("Location: /hospital/clients/index");
 }
 
