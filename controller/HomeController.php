@@ -21,7 +21,7 @@ function createPatient () {
 
 function createPatientRequest () {
 	post_createPatient();
-	// header("Location: index");
+	header("Location: index");
 }
 
 function deletePatient ($id) {
@@ -31,8 +31,8 @@ function deletePatient ($id) {
 
 function editPatient ($id) {
 	render("home/edit", array(
-		"species" => getAllSpecies(),
-		"clients" => getAllClients(),
+		"species" => getAllSpecies($id),
+		"clients" => getAllClients($id),
 		"patient" => getPatient($id)
 	));
 }

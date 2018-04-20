@@ -95,15 +95,15 @@ function post_createClient () {
 
 function post_createPatient () {
 	$patientName = $_POST["name"];
-	$patientSpecies = $_POST["species"];
+	$patientSpieces = $_POST["species"];
 	$patientStatus = $_POST["status"];
 	$patientClient = $_POST["client"];
 	$db = openDatabaseConnection();
-	$sql = "INSERT INTO patients (patient_name, species_id, client_id, patient_status) VALUES (:patientName, :patientSpecies, :patientClient, :patientStatus)";
+	$sql = "INSERT INTO patients (patient_name, species_id, client_id, patient_status) VALUES (:patientName, :patientSpieces, :patientClient, :patientStatus)";
 	$query = $db->prepare($sql);
 	$query->execute(array(	
 		":patientName" => $patientName,
-		":patientSpieces" => $patientSpecies,
+		":patientSpieces" => $patientSpieces,
 		":patientStatus" => $patientStatus,
 		":patientClient" => $patientClient				
 	));
@@ -155,9 +155,9 @@ function post_updatePatientRequest ($id) {
     $query->execute(array(
 		":id" => $id,
 		"patientName" => $patientName,
-		"patientSpecies" => $patientSpecies,
-		"patientClient" => $patientClient,
+		"patientSpieces" => $patientSpieces,
 		"patientStatus" => $patientStatus,
+		"patientClient" => $patientClient,
 	));
     $db = null;
 

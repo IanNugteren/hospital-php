@@ -7,7 +7,7 @@
                 foreach($species as $specie)
                 {
                     echo "<option value=" . $specie['species_id'] .">" . $specie['species_description'] ."</option>";
-                }
+				}
             ?>
         </select>
 		<h3>Status</h3>
