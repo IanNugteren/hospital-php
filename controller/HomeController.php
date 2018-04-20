@@ -12,15 +12,32 @@ function index () {
 }
 
 function createPatient () {
-	render("home/create");
+	render("home/create", array(
+		'species' => getAllSpecies(),
+		'clients' => getAllClients()
+	));
+
 }
 
 function createPatientRequest () {
 	post_createPatient();
-	header("Location: index");
+	// header("Location: index");
 }
 
 function deletePatient ($id) {
 	post_deletePatient($id);
+	header("Location: /hospital/home/index");
+}
+
+function editPatient ($id) {
+	render("home/edit", array(
+		"species" => getAllSpecies(),
+		"clients" => getAllClients(),
+		"patient" => getPatient($id)
+	));
+}
+
+function updatePatientRequest ($id) {
+	post_updatePatientRequest ($id);
 	header("Location: /hospital/home/index");
 }

@@ -26,6 +26,7 @@
 					echo "<td>" . $patient['client_firstname'] . "</td>";
 					echo "<td>" . $patient['patient_status'] . "</td>";
 					echo "<td><a href=\"" . URL . "home/deletePatient/" . $patient['patient_id'] . "\">Verwijderen</a></td>";
+					echo "<td><a href=\"" . URL . "home/editPatient/" . $patient['patient_id'] . "\">Edit</a></td>";
 					echo "</tr>";
 				}
 			?>

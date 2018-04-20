@@ -34,6 +34,17 @@ function getAllSpecies() {
 }
 
 // get 1 specie , client or patient
+function getPatient ($id) {
+	$db = openDatabaseConnection();
+	$sql = "SELECT * FROM patients WHERE patient_id = :id";
+	$query = $db->prepare($sql);
+	$query->execute(array(
+		":id" => $id
+	));
+	$db = null;
+	return $query->fetch();
+
+}
 
 function getSpecie ($id) {
 	$db = openDatabaseConnection();
@@ -84,15 +95,15 @@ function post_createClient () {
 
 function post_createPatient () {
 	$patientName = $_POST["name"];
-	$patientSpieces = $_POST["species"];
+	$patientSpecies = $_POST["species"];
 	$patientStatus = $_POST["status"];
 	$patientClient = $_POST["client"];
 	$db = openDatabaseConnection();
-	$sql = "INSERT INTO patients (patient_name, species_id, client_id, patient_status) VALUES (:patientName, :patientSpieces, :patientStatus, :patientClient)";
+	$sql = "INSERT INTO patients (patient_name, species_id, client_id, patient_status) VALUES (:patientName, :patientSpecies, :patientClient, :patientStatus)";
 	$query = $db->prepare($sql);
 	$query->execute(array(	
 		":patientName" => $patientName,
-		":patientSpieces" => $patientSpieces,
+		":patientSpieces" => $patientSpecies,
 		":patientStatus" => $patientStatus,
 		":patientClient" => $patientClient				
 	));
@@ -132,6 +143,25 @@ function post_deleteSpecies ($id) {
 }
 
 // post update
+
+function post_updatePatientRequest ($id) {
+	$patientName = $_POST["name"];
+	$patientSpieces = $_POST["species"];
+	$patientStatus = $_POST["status"];
+	$patientClient = $_POST["client"];
+	$db = openDatabaseConnection();
+    $sql = "UPDATE patients SET patient_name = :patientName, species_id = :patientSpieces, client_id = :patientClient, patient_status = :patientStatus  WHERE patient_id = :id";
+    $query = $db->prepare($sql);
+    $query->execute(array(
+		":id" => $id,
+		"patientName" => $patientName,
+		"patientSpecies" => $patientSpecies,
+		"patientClient" => $patientClient,
+		"patientStatus" => $patientStatus,
+	));
+    $db = null;
+
+}
 
 function post_updateSpeciesRequest ($id) {
 	$speciesDescription = $_POST["description"];

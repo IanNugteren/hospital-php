@@ -10,7 +10,6 @@ table {
 table, td, th {
 	border : 1px #ddd solid;
 	border-collapse : collapse;
-	background-color: #ccc;
 	color : black;
 }
 
